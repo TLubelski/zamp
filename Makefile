@@ -34,9 +34,11 @@ obj/LibInterface.o: inc/LibInterface.hh inc/Interp4Command.hh src/LibInterface.c
 obj/Preprocessor.o: src/Preprocessor.cpp inc/Preprocessor.hh
 	g++ -c ${CPPFLAGS} -o obj/Preprocessor.o src/Preprocessor.cpp
 
+obj/Scene.o: src/Scene.cpp inc/Scene.hh
+	g++ -c ${CPPFLAGS} -o obj/Scene.o src/Scene.cpp
+
 clean:
 	rm -f obj/* interp core*
-
 
 clean_plugin:
 	cd plugin; make clean
