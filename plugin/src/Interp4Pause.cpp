@@ -16,13 +16,13 @@ Interp4Command *CreateCmd(void)
   return Interp4Pause::CreateCmd();
 }
 
-Interp4Pause::Interp4Pause() : timeout(0)
+Interp4Pause::Interp4Pause() : _Timeout(0)
 {
 }
 
 void Interp4Pause::PrintCmd() const
 {
-  cout << GetCmdName() << " " << timeout << endl;
+  cout << GetCmdName() << " " << _Timeout << endl;
 }
 
 const char *Interp4Pause::GetCmdName() const
@@ -40,9 +40,7 @@ bool Interp4Pause::ExecCmd(MobileObj *pMobObj, int Socket) const
 
 bool Interp4Pause::ReadParams(std::istream &Strm_CmdsList)
 {
-  /*
-   *  Tu trzeba napisać odpowiedni kod.
-   */
+  Strm_CmdsList >> _Timeout;
   return true;
 }
 

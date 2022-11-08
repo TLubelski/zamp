@@ -1,4 +1,4 @@
-# ZAMP 
+# Zaawansowane metody programowania
 
 Dostarczony plik Makefile umozliwia realizacje trzech 
 zasadniczych podcelow i jednego podcelu pomocniczego.
@@ -28,3 +28,7 @@ zasadniczych podcelow i jednego podcelu pomocniczego.
     Aby to zrobic nalezy wydac polecenie:
 
                         make help
+
+ 5. Aby uruchomić:
+   
+                        ./run.sh

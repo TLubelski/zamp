@@ -10,7 +10,8 @@
 class Interp4Pause : public Interp4Command
 {
 private:
-  int timeout;
+
+  int _Timeout;
 
 public:
   Interp4Pause();

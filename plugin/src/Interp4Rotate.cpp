@@ -16,13 +16,13 @@ Interp4Command *CreateCmd(void)
   return Interp4Rotate::CreateCmd();
 }
 
-Interp4Rotate::Interp4Rotate() : angle(0)
+Interp4Rotate::Interp4Rotate() : _ObjName(""), _RotSpeed(0), _Angle(0)
 {
 }
 
 void Interp4Rotate::PrintCmd() const
 {
-  cout << GetCmdName() << " " << angle << endl;
+  cout << GetCmdName() << " " << _ObjName << " " << _RotSpeed << " " << _Angle << endl;
 }
 
 const char *Interp4Rotate::GetCmdName() const
@@ -40,9 +40,9 @@ bool Interp4Rotate::ExecCmd(MobileObj *pMobObj, int Socket) const
 
 bool Interp4Rotate::ReadParams(std::istream &Strm_CmdsList)
 {
-  /*
-   *  Tu trzeba napisać odpowiedni kod.
-   */
+  Strm_CmdsList >> _ObjName;
+  Strm_CmdsList >> _RotSpeed;
+  Strm_CmdsList >> _Angle;
   return true;
 }
 
@@ -53,5 +53,5 @@ Interp4Command *Interp4Rotate::CreateCmd()
 
 void Interp4Rotate::PrintSyntax() const
 {
-  cout << "   Rotate Kat_skretu[rad]" << endl;
+  cout << "   Rotate Szybkosc_katowa[rad/s] Kat_skretu[rad]" << endl;
 }

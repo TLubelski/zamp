@@ -16,13 +16,13 @@ Interp4Command *CreateCmd(void)
   return Interp4Set::CreateCmd();
 }
 
-Interp4Set::Interp4Set() : x(0), y(0)
+Interp4Set::Interp4Set() : _ObjName(""), _X(0), _Y(0), _RotZ(0)
 {
 }
 
 void Interp4Set::PrintCmd() const
 {
-  cout << GetCmdName() << " " << x << " " << y << endl;
+  cout << GetCmdName() << " " << _ObjName << " " << _X << " " << _Y << " " << _RotZ << endl;
 }
 
 const char *Interp4Set::GetCmdName() const
@@ -40,9 +40,10 @@ bool Interp4Set::ExecCmd(MobileObj *pMobObj, int Socket) const
 
 bool Interp4Set::ReadParams(std::istream &Strm_CmdsList)
 {
-  /*
-   *  Tu trzeba napisać odpowiedni kod.
-   */
+  Strm_CmdsList >> _ObjName;
+  Strm_CmdsList >> _X;
+  Strm_CmdsList >> _Y;
+  Strm_CmdsList >> _RotZ;
   return true;
 }
 
@@ -53,5 +54,5 @@ Interp4Command *Interp4Set::CreateCmd()
 
 void Interp4Set::PrintSyntax() const
 {
-  cout << "   Rotate X[m] Y[m]" << endl;
+  cout << "   Set X[mm] Y[mm] RotZ[rad]" << endl;
 }

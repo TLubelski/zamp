@@ -10,7 +10,9 @@
 class Interp4Set : public Interp4Command
 {
 private:
-  int x, y;
+  std::string _ObjName;
+  int _X, _Y;
+  double _RotZ;
 
 public:
   Interp4Set();

@@ -1,4 +1,4 @@
-__start__: obj __lines_for_space__ interp __plugin__
+__start__: obj interp __plugin__ __lines_for_space__
 	./run.sh
 
 obj:
@@ -22,8 +22,8 @@ LDFLAGS=-Wall
 
 
 
-interp: obj/main.o obj/LibInterface.o obj/Preprocessor.o
-	g++ ${LDFLAGS} -o interp  obj/main.o obj/LibInterface.o obj/Preprocessor.o -ldl
+interp: obj/main.o obj/LibInterface.o obj/FileParser.o obj/xmlinterp.o
+	g++ ${LDFLAGS} -o interp  obj/main.o obj/LibInterface.o obj/FileParser.o obj/xmlinterp.o -ldl -lxerces-c
 
 obj/main.o: src/main.cpp inc/Interp4Command.hh
 	g++ -c ${CPPFLAGS} -o obj/main.o src/main.cpp
@@ -31,11 +31,15 @@ obj/main.o: src/main.cpp inc/Interp4Command.hh
 obj/LibInterface.o: inc/LibInterface.hh inc/Interp4Command.hh src/LibInterface.cpp
 	g++ -c ${CPPFLAGS} -o obj/LibInterface.o src/LibInterface.cpp
 
-obj/Preprocessor.o: src/Preprocessor.cpp inc/Preprocessor.hh
-	g++ -c ${CPPFLAGS} -o obj/Preprocessor.o src/Preprocessor.cpp
+obj/FileParser.o: src/FileParser.cpp inc/FileParser.hh
+	g++ -c ${CPPFLAGS} -o obj/FileParser.o src/FileParser.cpp
 
 obj/Scene.o: src/Scene.cpp inc/Scene.hh
 	g++ -c ${CPPFLAGS} -o obj/Scene.o src/Scene.cpp
+
+obj/xmlinterp.o: src/xmlinterp.cpp inc/xmlinterp.hh
+	g++ -c ${CPPFLAGS} -o obj/xmlinterp.o src/xmlinterp.cpp
+
 
 clean:
 	rm -f obj/* interp core*

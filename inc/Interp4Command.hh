@@ -24,22 +24,27 @@
     *  
     */
    virtual ~Interp4Command() {}
+   
    /*!
     * \brief Wyświetla postać bieżącego polecenia (nazwę oraz wartości parametrów).
     */
    virtual void PrintCmd() const = 0;
+
    /*!
     * \brief Wyświetla składnię polecenia.
     */
    virtual void PrintSyntax() const = 0;
+
    /*!
     * \brief Wyświetla nazwę polecenia.
     */
    virtual const char* GetCmdName() const = 0;
+
    /*!
     * \brief Wykonuje polecenie oraz wizualizuje jego realizację.
     */
    virtual bool ExecCmd( MobileObj *pMobObj, int Socket ) const = 0;
+
    /*!
     * \brief Czyta wartości parametrów danego polecenia.
     */

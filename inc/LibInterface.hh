@@ -15,7 +15,7 @@ private:
   Interp4Command *_pCmd;
 
 public:
-  LibInterface(const char *libName, int mode);
+  LibInterface(const char *libName, int mode = RTLD_LAZY);
   ~LibInterface();
 
   std::string getCmdName();
