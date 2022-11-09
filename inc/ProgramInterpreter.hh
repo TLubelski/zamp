@@ -7,7 +7,6 @@
 #include <vector>
 #include <sstream>
 
-#define DUPA cout << "dupa" << endl;
 
 using std::cout;
 using std::endl;
