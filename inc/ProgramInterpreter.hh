@@ -7,7 +7,6 @@
 #include <vector>
 #include <sstream>
 
-
 using std::cout;
 using std::endl;
 using std::string;
@@ -26,10 +25,10 @@ public:
 
   void loadLibs()
   {
-    _LibMan.addLib("Move", "libInterp4Move.so");
-    _LibMan.addLib("Pause", "libInterp4Pause.so");
-    _LibMan.addLib("Rotate", "libInterp4Rotate.so");
-    _LibMan.addLib("Set", "libInterp4Set.so");
+    _LibMan.addLib("libInterp4Move.so");
+    _LibMan.addLib("libInterp4Pause.so");
+    _LibMan.addLib("libInterp4Rotate.so");
+    _LibMan.addLib("libInterp4Set.so");
   }
 
   void printLibs()
@@ -73,5 +72,10 @@ public:
       cout << i++ << ". ";
       cmd->PrintCmd();
     }  
+  }
+
+  void execCmds()
+  {
+
   }
 };

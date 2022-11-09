@@ -13,8 +13,9 @@ public:
   Set4LibInterfaces(/* args */){}
   ~Set4LibInterfaces(){}
 
-  void addLib(std::string name, std::string file)
+  void addLib(std::string file)
   {
-    insert(std::pair<std::string, std::shared_ptr<LibInterface> >(name, std::make_shared<LibInterface>(file.c_str())));
+    auto libPtr = std::make_shared<LibInterface>(file.c_str());
+    insert(std::pair<std::string, std::shared_ptr<LibInterface> >(libPtr->getCmdName(), libPtr));
   }
 };

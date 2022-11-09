@@ -262,6 +262,10 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_webenginewidgets.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_webkit.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_webkit_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_webkitwidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_webkitwidgets_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_webview.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_webview_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_widgets.pri \
@@ -272,6 +276,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xkbcommon_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_phonon4qt5.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Prison.pri \
 		/usr/lib/qt/mkspecs/modules/qt_QuickAddons.pri \
@@ -527,6 +533,10 @@ Makefile.app: /tmp/dstronaut/serwer_graficzny/out/pro/serwer_graficzny.pro /usr/
 		/usr/lib/qt/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_webenginewidgets.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_webkit.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_webkit_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_webkitwidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_webkitwidgets_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_webview.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_webview_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_widgets.pri \
@@ -537,6 +547,8 @@ Makefile.app: /tmp/dstronaut/serwer_graficzny/out/pro/serwer_graficzny.pro /usr/
 		/usr/lib/qt/mkspecs/modules/qt_lib_xkbcommon_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_phonon4qt5.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Prison.pri \
 		/usr/lib/qt/mkspecs/modules/qt_QuickAddons.pri \
@@ -571,7 +583,8 @@ Makefile.app: /tmp/dstronaut/serwer_graficzny/out/pro/serwer_graficzny.pro /usr/
 		/usr/lib/qt/mkspecs/features/exceptions.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
-		/tmp/dstronaut/serwer_graficzny/out/pro/serwer_graficzny.pro
+		/tmp/dstronaut/serwer_graficzny/out/pro/serwer_graficzny.pro \
+		/usr/lib/libQGLViewer-qt5.prl
 	$(QMAKE) -o Makefile.app /tmp/dstronaut/serwer_graficzny/out/pro/serwer_graficzny.pro
 /usr/lib/qt/mkspecs/features/spec_pre.prf:
 /usr/lib/qt/mkspecs/common/unix.conf:
@@ -748,6 +761,10 @@ Makefile.app: /tmp/dstronaut/serwer_graficzny/out/pro/serwer_graficzny.pro /usr/
 /usr/lib/qt/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_webenginewidgets.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_webenginewidgets_private.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_webkit.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_webkit_private.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_webkitwidgets.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_webkitwidgets_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_webview.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_webview_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_widgets.pri:
@@ -758,6 +775,8 @@ Makefile.app: /tmp/dstronaut/serwer_graficzny/out/pro/serwer_graficzny.pro /usr/
 /usr/lib/qt/mkspecs/modules/qt_lib_xkbcommon_support_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_xml.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_xml_private.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_xmlpatterns_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_phonon4qt5.pri:
 /usr/lib/qt/mkspecs/modules/qt_Prison.pri:
 /usr/lib/qt/mkspecs/modules/qt_QuickAddons.pri:
@@ -793,6 +812,7 @@ Makefile.app: /tmp/dstronaut/serwer_graficzny/out/pro/serwer_graficzny.pro /usr/
 /usr/lib/qt/mkspecs/features/yacc.prf:
 /usr/lib/qt/mkspecs/features/lex.prf:
 /tmp/dstronaut/serwer_graficzny/out/pro/serwer_graficzny.pro:
+/usr/lib/libQGLViewer-qt5.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile.app /tmp/dstronaut/serwer_graficzny/out/pro/serwer_graficzny.pro
 
