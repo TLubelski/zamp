@@ -4,4 +4,4 @@
 
 std::string processCmdFile(std::string filename);
 
-bool ReadFile(const char* sFileName, Configuration &rConfig);
+bool processConfig(const char* sFileName, Configuration &rConfig);

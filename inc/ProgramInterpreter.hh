@@ -23,12 +23,20 @@ public:
   ProgramInterpreter() {}
   ~ProgramInterpreter() {}
 
+  void parseConfig()
+  {
+    cout << "Czytanie xml ..." << endl;
+    if (!processConfig("config/config.xml", _Config))
+    {
+      cout << "Blad!" << endl;
+      exit(1);
+    }
+  }
+
   void loadLibs()
   {
-    _LibMan.addLib("libInterp4Move.so");
-    _LibMan.addLib("libInterp4Pause.so");
-    _LibMan.addLib("libInterp4Rotate.so");
-    _LibMan.addLib("libInterp4Set.so");
+    for(const string& libName : _Config.getLibs())
+      _LibMan.addLib(libName);
   }
 
   void printLibs()
@@ -42,12 +50,18 @@ public:
     }
   }
 
-  void parseConfig()
+  void prepareScene()
   {
-    cout << "Czytanie xml " << ReadFile("config/config.xml", _Config) << endl;
+    for(const CubeConfig& cube : _Config.getCubes())
+    {
+      std::shared_ptr<MobileObj> obj;
+      obj->SetName(cube.Name.c_str());
+      obj->SetPosition_m(cube.Trans_m);
+      // obj->
+    }
   }
 
-  void parseInput(string cmdFile)
+  void parseCmds(string cmdFile)
   {
     std::stringstream cmdStream(processCmdFile(cmdFile));
 
@@ -60,10 +74,15 @@ public:
         _Cmds.push_back(_LibMan[name]->getCmd());
         _Cmds.back()->ReadParams(cmdStream);
       }
+      if (cmdStream.fail())
+      {
+        cout << "Blad!" << endl;
+        exit(1);
+      }
     }
   }
 
-  void printCommands()
+  void printCmds()
   {
     cout << "Odczytane komendy: " << endl;
     int i = 1;
@@ -71,11 +90,10 @@ public:
     {
       cout << i++ << ". ";
       cmd->PrintCmd();
-    }  
+    }
   }
 
   void execCmds()
   {
-
   }
 };

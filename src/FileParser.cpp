@@ -50,7 +50,7 @@ string processCmdFile(string filename)
  * \retval true - jeśli wczytanie zostało zrealizowane poprawnie,
  * \retval false - w przeciwnym przypadku.
  */
-bool ReadFile(const char* sFileName, Configuration &rConfig)
+bool processConfig(const char* sFileName, Configuration &rConfig)
 {
   using namespace std;
   using namespace xercesc;
