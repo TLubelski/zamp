@@ -63,10 +63,12 @@ public:
     {
       cerr << "*** Blad przeslania napisu." << endl;
     }
+    usleep(100000);
   }
 
   void Close()
   {
+    Send("Close\n");
     close(rSocket);
   }
 };

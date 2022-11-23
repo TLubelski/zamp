@@ -16,7 +16,7 @@ Interp4Command *CreateCmd(void)
   return Interp4Set::CreateCmd();
 }
 
-Interp4Set::Interp4Set() : _ObjName(""), _X(0), _Y(0), _RotZ(0)
+Interp4Set::Interp4Set() : Interp4Command(""), _X(0), _Y(0), _RotZ(0)
 {
 }
 
@@ -30,11 +30,17 @@ const char *Interp4Set::GetCmdName() const
   return ::GetCmdName();
 }
 
-bool Interp4Set::ExecCmd(MobileObj *pMobObj, int Socket) const
+// bool Interp4Set::ExecCmd(MobileObj *pMobObj, int Socket) const
+// {
+//   /*
+//    *  Tu trzeba napisać odpowiedni kod.
+//    */
+//   return true;
+// }
+
+bool Interp4Set::ExecCmd(Scene *scene, SocketClient *sock) const
 {
-  /*
-   *  Tu trzeba napisać odpowiedni kod.
-   */
+
   return true;
 }
 

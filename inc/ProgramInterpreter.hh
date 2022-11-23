@@ -21,7 +21,6 @@ private:
   SocketClient sock;
   std::vector<Interp4Command *> _Cmds;
 
-
 public:
   ProgramInterpreter() {}
   ~ProgramInterpreter() {}
@@ -31,14 +30,14 @@ public:
     cout << "Czytanie xml ..." << endl;
     if (!processConfig("config/config.xml", _Config))
     {
-      cout << "Blad!" << endl;
+      // cout << "Config parser error!" << endl;
       exit(1);
     }
   }
 
   void loadLibs()
   {
-    for(const string& libName : _Config.getLibs())
+    for (const string &libName : _Config.getLibs())
       _LibMan.addLib(libName);
   }
 
@@ -55,12 +54,32 @@ public:
 
   void prepareScene()
   {
-    for(const CubeConfig& cube : _Config.getCubes())
+    sock.Send("Clear\n");
+
+    for (const CubeConfig &cube : _Config.getCubes())
     {
-      std::shared_ptr<MobileObj> obj;
+      auto obj = std::make_shared<MobileObj>();
       obj->SetName(cube.Name.c_str());
       obj->SetPosition_m(cube.Trans_m);
-      // obj->
+      obj->SetAng_Roll_deg(cube.RotXYZ_deg[0]);
+      obj->SetAng_Pitch_deg(cube.RotXYZ_deg[1]);
+      obj->SetAng_Yaw_deg(cube.RotXYZ_deg[2]);
+
+      _Scn.AddMobileObj(obj);
+
+      std::stringstream strm;
+
+      strm << "AddObj"
+           << " Name=" << cube.Name
+           << " Shift=" << cube.Shift
+           << " Scale=" << cube.Scale
+           << " Trans_m=" << cube.Trans_m
+           << " RGB=" << cube.RGB
+           << "\n";
+
+      cout << strm.str();
+
+      sock.Send(strm.str().c_str());
     }
   }
 
@@ -72,16 +91,16 @@ public:
     {
       string name;
       cmdStream >> name;
-      if (name.length() > 0)
+      if (name.length() > 1)
       {
         _Cmds.push_back(_LibMan[name]->getCmd());
         _Cmds.back()->ReadParams(cmdStream);
       }
-      if (cmdStream.fail())
-      {
-        cout << "Blad!" << endl;
-        exit(1);
-      }
+      // if (cmdStream.fail())
+      // {
+      //   // cout << "Command parse error!" << endl;
+      //   // exit(1);
+      // }
     }
   }
 
@@ -98,17 +117,25 @@ public:
 
   void execCmds()
   {
+    for (Interp4Command *cmd : _Cmds)
+    {
+    }
   }
 
   void run(string cmdFile)
   {
     parseConfig();
     loadLibs();
-
-    parseInput(cmdFile);
+    printLibs();
+    parseCmds(cmdFile);
+    printCmds();
 
     sock.Open();
-    
+
+    prepareScene();
+
     execCmds();
+
+    sock.Close();
   }
 };

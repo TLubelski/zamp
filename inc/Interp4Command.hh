@@ -1,8 +1,10 @@
-#ifndef  INTERP4COMMAND_HH
-#define  INTERP4COMMAND_HH
+#ifndef INTERP4COMMAND_HH
+#define INTERP4COMMAND_HH
 
 #include <iostream>
 #include "MobileObj.hh"
+#include "Scene.hh"
+#include "SocketClient.hh"
 
 /*!
  * \file
@@ -16,39 +18,50 @@
  *
  *  Klasa modeluje ...
  */
- class Interp4Command {
-  public:
-   /*!
-    * \brief Destruktor wirtualny ze wzgledu na klasy pochodne
-    *
-    *  
-    */
-   virtual ~Interp4Command() {}
-   
-   /*!
-    * \brief Wyświetla postać bieżącego polecenia (nazwę oraz wartości parametrów).
-    */
-   virtual void PrintCmd() const = 0;
+class Interp4Command
+{
+protected:
+  std::string _ObjName;
 
-   /*!
-    * \brief Wyświetla składnię polecenia.
-    */
-   virtual void PrintSyntax() const = 0;
+public:
+  std::string getObjName() const { return _ObjName; }
 
-   /*!
-    * \brief Wyświetla nazwę polecenia.
-    */
-   virtual const char* GetCmdName() const = 0;
+  Interp4Command(std::string objName) : _ObjName(objName) {}
 
-   /*!
-    * \brief Wykonuje polecenie oraz wizualizuje jego realizację.
-    */
-   virtual bool ExecCmd( MobileObj *pMobObj, int Socket ) const = 0;
+  /*!
+   * \brief Destruktor wirtualny ze wzgledu na klasy pochodne
+   *
+   *
+   */
+  virtual ~Interp4Command() {}
 
-   /*!
-    * \brief Czyta wartości parametrów danego polecenia.
-    */
-   virtual bool ReadParams(std::istream& Strm_CmdsList) = 0;
- };
+  /*!
+   * \brief Wyświetla postać bieżącego polecenia (nazwę oraz wartości parametrów).
+   */
+  virtual void PrintCmd() const = 0;
+
+  /*!
+   * \brief Wyświetla składnię polecenia.
+   */
+  virtual void PrintSyntax() const = 0;
+
+  /*!
+   * \brief Wyświetla nazwę polecenia.
+   */
+  virtual const char *GetCmdName() const = 0;
+
+  /*!
+   * \brief Wykonuje polecenie oraz wizualizuje jego realizację.
+   */
+  // virtual bool ExecCmd(MobileObj *pMobObj, int Socket) const = 0;
+
+  virtual bool ExecCmd(Scene *scene, SocketClient *sock) const = 0;
+
+
+  /*!
+   * \brief Czyta wartości parametrów danego polecenia.
+   */
+  virtual bool ReadParams(std::istream &Strm_CmdsList) = 0;
+};
 
 #endif

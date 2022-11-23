@@ -16,7 +16,7 @@ Interp4Command *CreateCmd(void)
   return Interp4Pause::CreateCmd();
 }
 
-Interp4Pause::Interp4Pause() : _Timeout(0)
+Interp4Pause::Interp4Pause() : Interp4Command(""), _Timeout(0)
 {
 }
 
@@ -30,11 +30,17 @@ const char *Interp4Pause::GetCmdName() const
   return ::GetCmdName();
 }
 
-bool Interp4Pause::ExecCmd(MobileObj *pMobObj, int Socket) const
+// bool Interp4Pause::ExecCmd(MobileObj *pMobObj, int Socket) const
+// {
+//   /*
+//    *  Tu trzeba napisać odpowiedni kod.
+//    */
+//   return true;
+// }
+
+bool Interp4Pause::ExecCmd(Scene *scene, SocketClient *sock) const
 {
-  /*
-   *  Tu trzeba napisać odpowiedni kod.
-   */
+
   return true;
 }
 

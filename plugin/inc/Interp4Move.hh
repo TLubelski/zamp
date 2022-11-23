@@ -26,7 +26,6 @@ class Interp4Move: public Interp4Command {
    *  do przechowywania wartości parametrów danego polecenia.
    *  Ponieżej zdefiniowane jest tylko jedno pole jako przykład.
    */
-  std::string _ObjName;
   double _Speed_mmS;
   double _Distance_mm;
   
@@ -50,7 +49,9 @@ class Interp4Move: public Interp4Command {
   /*!
    * \brief Wykonuje polecenie oraz wizualizuje jego realizację
    */
-  virtual bool ExecCmd( MobileObj  *pMobObj, int Socket) const;
+  // virtual bool ExecCmd( MobileObj  *pMobObj, int Socket) const;
+
+  virtual bool ExecCmd(Scene *scene, SocketClient *sock) const;
   /*!
    * \brief Czyta wartości parametrów danego polecenia
    */

@@ -18,7 +18,7 @@ Interp4Command *CreateCmd(void)
 }
 
 
-Interp4Move::Interp4Move() : _ObjName(""), _Speed_mmS(0), _Distance_mm(0)
+Interp4Move::Interp4Move() : Interp4Command(""), _Speed_mmS(0), _Distance_mm(0)
 {
 }
 
@@ -38,13 +38,24 @@ const char *Interp4Move::GetCmdName() const
 }
 
 
-bool Interp4Move::ExecCmd(MobileObj *pMobObj, int Socket) const
+// bool Interp4Move::ExecCmd(MobileObj *pMobObj, int Socket) const
+// {
+//   /*
+//    *  Tu trzeba napisać odpowiedni kod.
+//    */
+//   return true;
+// }
+
+bool Interp4Move::ExecCmd(Scene *scene, SocketClient *sock) const
 {
-  /*
-   *  Tu trzeba napisać odpowiedni kod.
-   */
+  std::shared_ptr<MobileObj> obj = scene->FindMobileObj(_ObjName.c_str());
+  
+  
+  
+  
   return true;
 }
+
 
 
 bool Interp4Move::ReadParams(std::istream &Strm_CmdsList)

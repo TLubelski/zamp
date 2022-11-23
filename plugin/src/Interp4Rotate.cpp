@@ -16,7 +16,7 @@ Interp4Command *CreateCmd(void)
   return Interp4Rotate::CreateCmd();
 }
 
-Interp4Rotate::Interp4Rotate() : _ObjName(""), _RotSpeed(0), _Angle(0)
+Interp4Rotate::Interp4Rotate() : Interp4Command(""), _RotSpeed(0), _Angle(0)
 {
 }
 
@@ -30,11 +30,17 @@ const char *Interp4Rotate::GetCmdName() const
   return ::GetCmdName();
 }
 
-bool Interp4Rotate::ExecCmd(MobileObj *pMobObj, int Socket) const
+// bool Interp4Rotate::ExecCmd(MobileObj *pMobObj, int Socket) const
+// {
+//   /*
+//    *  Tu trzeba napisać odpowiedni kod.
+//    */
+//   return true;
+// }
+
+bool Interp4Rotate::ExecCmd(Scene *scene, SocketClient *sock) const
 {
-  /*
-   *  Tu trzeba napisać odpowiedni kod.
-   */
+
   return true;
 }
 

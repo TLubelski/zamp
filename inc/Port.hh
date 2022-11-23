@@ -1,5 +1,4 @@
-#ifndef PORT_HH
-#define PORT_HH
+#pragma once
 
 
 /*!
@@ -10,4 +9,3 @@
  */
 #define PORT  6217
 
-#endif

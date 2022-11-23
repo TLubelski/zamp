@@ -10,7 +10,6 @@
 class Interp4Set : public Interp4Command
 {
 private:
-  std::string _ObjName;
   int _X, _Y;
   double _RotZ;
 
@@ -23,7 +22,9 @@ public:
 
   virtual const char *GetCmdName() const;
 
-  virtual bool ExecCmd(MobileObj *pMobObj, int Socket) const;
+  // virtual bool ExecCmd(MobileObj *pMobObj, int Socket) const;
+
+  virtual bool ExecCmd(Scene *scene, SocketClient *sock) const;
 
   virtual bool ReadParams(std::istream &Strm_CmdsList);
 

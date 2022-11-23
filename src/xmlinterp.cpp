@@ -95,22 +95,20 @@ void XMLInterp4Config::ProcessCubeAttrs(const xercesc::Attributes &rAttrs)
       IStrm >> vValue;
 
       if (IStrm.fail())
-        cerr << " Blad!!!" << endl;
+        cerr << " Cube parser error" << endl;
       else
         cout << sName << ":  " << vValue << endl;
     
       if (!strcmp(sName, "Shift"))
         conf.Shift = vValue;
-      else if (!strcmp(sName, "Shift"))
-        conf.Shift = vValue;
       else if (!strcmp(sName, "Scale"))
-        conf.Shift = vValue;
+        conf.Scale = vValue;
       else if (!strcmp(sName, "RotXYZ_deg"))
-        conf.Shift = vValue;
+        conf.RotXYZ_deg = vValue;
       else if (!strcmp(sName, "Trans_m"))
-        conf.Shift = vValue;
+        conf.Trans_m = vValue;
       else if (!strcmp(sName, "RGB"))
-        conf.Shift = vValue;
+        conf.RGB = vValue;
     }
 
     xercesc::XMLString::release(&sName);
