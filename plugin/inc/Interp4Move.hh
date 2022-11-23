@@ -27,7 +27,7 @@ class Interp4Move: public Interp4Command {
    *  Ponieżej zdefiniowane jest tylko jedno pole jako przykład.
    */
   double _Speed_mmS;
-  double _Distance_mm;
+  double _Distance_m;
   
  public:
   /*!

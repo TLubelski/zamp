@@ -18,7 +18,7 @@ Interp4Command *CreateCmd(void)
 }
 
 
-Interp4Move::Interp4Move() : Interp4Command(""), _Speed_mmS(0), _Distance_mm(0)
+Interp4Move::Interp4Move() : Interp4Command(""), _Speed_mS(0), _Distance_m(0)
 {
 }
 
@@ -28,7 +28,7 @@ void Interp4Move::PrintCmd() const
   /*
    *  Tu trzeba napisać odpowiednio zmodyfikować kod poniżej.
    */
-  cout << GetCmdName() << " " << _ObjName << " " << _Speed_mmS << " " << _Distance_mm << endl;
+  cout << GetCmdName() << " " << _ObjName << " " << _Speed_mS << " " << _Distance_m << endl;
 }
 
 
@@ -49,8 +49,8 @@ const char *Interp4Move::GetCmdName() const
 bool Interp4Move::ExecCmd(Scene *scene, SocketClient *sock) const
 {
   std::shared_ptr<MobileObj> obj = scene->FindMobileObj(_ObjName.c_str());
-  
-  
+
+  obj->UsePosition_m()
   
   
   return true;
@@ -61,8 +61,8 @@ bool Interp4Move::ExecCmd(Scene *scene, SocketClient *sock) const
 bool Interp4Move::ReadParams(std::istream &Strm_CmdsList)
 {
   Strm_CmdsList >> _ObjName;
-  Strm_CmdsList >> _Speed_mmS;
-  Strm_CmdsList >> _Distance_mm;
+  Strm_CmdsList >> _Speed_mS;
+  Strm_CmdsList >> _Distance_m;
 
   return true;
 }
@@ -76,5 +76,5 @@ Interp4Command *Interp4Move::CreateCmd()
 
 void Interp4Move::PrintSyntax() const
 {
-  cout << "   Move  NazwaObiektu  Szybkosc[mm/s]  DlugoscDrogi[mm]" << endl;
+  cout << "   Move  NazwaObiektu  Szybkosc[m/s]  DlugoscDrogi[m]" << endl;
 }
