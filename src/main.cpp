@@ -5,14 +5,7 @@
 int main(int argc, char **argv)
 {
   ProgramInterpreter interp;
-  
-  interp.parseConfig();
-  interp.loadLibs();
-  interp.printLibs();
-  interp.prepareScene();
-  interp.parseCmds(argv[1]);
-  interp.printCmds();
-  interp.execCmds();
-
+  std::cout << endl;
+  interp.run(argv[1]);
   return 0;
 }

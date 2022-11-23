@@ -4,6 +4,7 @@
 #include "Set4LibInterfaces.hh"
 #include "FileParser.hh"
 #include "Interp4Command.hh"
+#include "SocketClient.hh"
 #include <vector>
 #include <sstream>
 
@@ -17,7 +18,9 @@ private:
   Scene _Scn;
   Set4LibInterfaces _LibMan;
   Configuration _Config;
+  SocketClient sock;
   std::vector<Interp4Command *> _Cmds;
+
 
 public:
   ProgramInterpreter() {}
@@ -95,5 +98,17 @@ public:
 
   void execCmds()
   {
+  }
+
+  void run(string cmdFile)
+  {
+    parseConfig();
+    loadLibs();
+
+    parseInput(cmdFile);
+
+    sock.Open();
+    
+    execCmds();
   }
 };

@@ -118,6 +118,13 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/modules/qt_KIOWidgets.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KItemViews.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KJobWidgets.pri \
+<<<<<<< Updated upstream
+=======
+		/usr/lib/qt/mkspecs/modules/qt_KJS.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KJSApi.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KNewStuff.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KNewStuffCore.pri \
+>>>>>>> Stashed changes
 		/usr/lib/qt/mkspecs/modules/qt_KNotifications.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KNTLM.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KService.pri \
@@ -348,6 +355,13 @@ Makefile.app: /tmp/dstronaut/serwer_graficzny/out/pro/serwer_graficzny.pro /usr/
 		/usr/lib/qt/mkspecs/modules/qt_KIOWidgets.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KItemViews.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KJobWidgets.pri \
+<<<<<<< Updated upstream
+=======
+		/usr/lib/qt/mkspecs/modules/qt_KJS.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KJSApi.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KNewStuff.pri \
+		/usr/lib/qt/mkspecs/modules/qt_KNewStuffCore.pri \
+>>>>>>> Stashed changes
 		/usr/lib/qt/mkspecs/modules/qt_KNotifications.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KNTLM.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KService.pri \
@@ -535,6 +549,13 @@ Makefile.app: /tmp/dstronaut/serwer_graficzny/out/pro/serwer_graficzny.pro /usr/
 /usr/lib/qt/mkspecs/modules/qt_KIOWidgets.pri:
 /usr/lib/qt/mkspecs/modules/qt_KItemViews.pri:
 /usr/lib/qt/mkspecs/modules/qt_KJobWidgets.pri:
+<<<<<<< Updated upstream
+=======
+/usr/lib/qt/mkspecs/modules/qt_KJS.pri:
+/usr/lib/qt/mkspecs/modules/qt_KJSApi.pri:
+/usr/lib/qt/mkspecs/modules/qt_KNewStuff.pri:
+/usr/lib/qt/mkspecs/modules/qt_KNewStuffCore.pri:
+>>>>>>> Stashed changes
 /usr/lib/qt/mkspecs/modules/qt_KNotifications.pri:
 /usr/lib/qt/mkspecs/modules/qt_KNTLM.pri:
 /usr/lib/qt/mkspecs/modules/qt_KService.pri:
