@@ -40,6 +40,24 @@ const char *Interp4Set::GetCmdName() const
 
 bool Interp4Set::ExecCmd(Scene *scene, SocketClient *sock) const
 {
+  std::shared_ptr<MobileObj> obj = scene->FindMobileObj(_ObjName.c_str());
+  Vector3D targetPos;
+  targetPos[0] = _X;
+  targetPos[1] = _Y;
+
+  obj->LockAccess();
+  obj->UsePosition_m() = targetPos;
+  obj->SetAng_Yaw_deg(_RotZ);
+  obj->UnlockAccess();
+
+  std::stringstream cmd_str;
+  cmd_str << "UpdateObj Name=" << obj->GetName();
+  cmd_str << " Trans_m=" << obj->UsePosition_m();
+  cmd_str << " RotXYZ_deg=(0,0," << obj->GetAng_Yaw_deg() << ")\n";
+  sock->LockAccess();
+  sock->Send(cmd_str.str().c_str());
+  sock->UnlockAccess();
+  usleep(1000);
 
   return true;
 }
@@ -50,6 +68,10 @@ bool Interp4Set::ReadParams(std::istream &Strm_CmdsList)
   Strm_CmdsList >> _X;
   Strm_CmdsList >> _Y;
   Strm_CmdsList >> _RotZ;
+
+  if (Strm_CmdsList.fail())
+    return false;
+
   return true;
 }
 

@@ -1,17 +1,40 @@
 <Config>
   <Plugins>
-    <Lib Name="libInterp4Set.so" />
     <Lib Name="libInterp4Move.so" />
     <Lib Name="libInterp4Rotate.so" />
     <Lib Name="libInterp4Pause.so" />
+    <Lib Name="libInterp4Set.so" />
   </Plugins>
   <Objects>
-    <Cube Name="Podstawa" Shift="0 -0.5 0" Scale="0.7 0.7 0.2"
-      RotXYZ_deg="10 0 0" Trans_m="0.1 0 0" RGB="0 0 255" />
-    <Cube Name="Podstawa.Ramie1" Shift="0 -0.5 0" Scale="0.1 0.1 0.6"
-      Trans_m="0 0.7 0" />  
-    <Cube Name="Podstawa.Ramie1.Ramie2" Shift="0 -0.5 0"
-      Scale="0.1 0.1 0.6" Trans_m="0 0.7 0" />
+    <Cube Name="Rocket" Shift="0 0 0" Scale="2 2 5"
+      RotXYZ_deg="90 90 90" Trans_m="0 0 0" RGB="50 50 50" />
+    <Cube Name="Rocket.Hat" Shift="0 0 5.5" Scale="2 2 0.5"
+      RotXYZ_deg="0 0 0" Trans_m="0 0 0" RGB="200 0 0" />
+    <Cube Name="Rocket.Hat2" Shift="0 0 6" Scale="1.5 1.5 0.5"
+      RotXYZ_deg="0 0 0" Trans_m="0 0 0" RGB="200 0 0" />
+    <Cube Name="Rocket.Hat3" Shift="0 0 6.5" Scale="1 1 0.5"
+      RotXYZ_deg="0 0 0" Trans_m="0 0 0" RGB="200 0 0" />
+    <Cube Name="Rocket.Hat4" Shift="0 0 7" Scale="0.5 0.5 0.5"
+      RotXYZ_deg="0 0 0" Trans_m="0 0 0" RGB="200 0 0" />
+    <Cube Name="Rocket.Window" Shift="0 2 1" Scale="1 0.5 1"
+      RotXYZ_deg="0 0 0" Trans_m="0 0 0" RGB="10 10 10" />
+    <Cube Name="Rocket.Aileron1" Shift="1.5 0 -1.1" Scale="1 0.5 2"
+      RotXYZ_deg="0 0 0" Trans_m="0 0 0" RGB="100 100 100" />
+    <Cube Name="Rocket.Aileron2" Shift="-1.5 0 -1.1" Scale="1 0.5 2"
+      RotXYZ_deg="0 0 0" Trans_m="0 0 0" RGB="100 100 100" />
+    <Cube Name="Rocket.Aileron3" Shift="0 1.5 -1.1" Scale="0.5 1 2"
+      RotXYZ_deg="0 0 0" Trans_m="0 0 0" RGB="100 100 100" />
+    <Cube Name="Rocket.Aileron4" Shift="0 -1.5 -1.1" Scale="0.5 1 2"
+      RotXYZ_deg="0 0 0" Trans_m="0 0 0" RGB="100 100 100" />
+    <Cube Name="Rocket.Engine" Shift="0 0 -2.5" Scale="1.5 1.5 1"
+      RotXYZ_deg="0 0 0" Trans_m="0 0 0" RGB="0 50 0" />
+    <Cube Name="Rocket.Engine2" Shift="0 0 -6" Scale="1.7 1.7 0.5"
+      RotXYZ_deg="0 0 0" Trans_m="0 0 0" RGB="0 50 0" />
+    <Cube Name="Rocket.Fire" Shift="0 0 -1.5" Scale="1.5 1.5 3"
+      RotXYZ_deg="0 0 0" Trans_m="0 0 0" RGB="255 50 0" />
+    <Cube Name="Moon" Shift="0 1.5 0" Scale="10 10 10"
+      RotXYZ_deg="0 0 0" Trans_m="0 0 0" RGB="255 255 255" />
+
+
   </Objects>
 </Config>
-  

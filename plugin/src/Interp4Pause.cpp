@@ -40,13 +40,17 @@ const char *Interp4Pause::GetCmdName() const
 
 bool Interp4Pause::ExecCmd(Scene *scene, SocketClient *sock) const
 {
-
+  usleep(1000*_Timeout);
   return true;
 }
 
 bool Interp4Pause::ReadParams(std::istream &Strm_CmdsList)
 {
   Strm_CmdsList >> _Timeout;
+
+  if(Strm_CmdsList.fail())
+    return false;
+
   return true;
 }
 

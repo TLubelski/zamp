@@ -8,6 +8,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
+#include <mutex>
 
 #include "Port.hh"
 
@@ -19,9 +20,14 @@ class SocketClient
 {
 private:
   int rSocket;
+  std::mutex _Guard;
 
 public:
   SocketClient() {}
+
+  void LockAccess() { _Guard.lock(); }
+
+  void UnlockAccess() { _Guard.unlock(); }
 
   bool Open(int port = PORT)
   {
@@ -63,7 +69,6 @@ public:
     {
       cerr << "*** Blad przeslania napisu." << endl;
     }
-    usleep(100000);
   }
 
   void Close()

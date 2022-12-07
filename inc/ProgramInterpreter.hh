@@ -7,6 +7,8 @@
 #include "SocketClient.hh"
 #include <vector>
 #include <sstream>
+#include <queue>
+#include <thread>
 
 using std::cout;
 using std::endl;
@@ -18,8 +20,9 @@ private:
   Scene _Scn;
   Set4LibInterfaces _LibMan;
   Configuration _Config;
-  SocketClient sock;
-  std::vector<Interp4Command *> _Cmds;
+  SocketClient _Sock;
+  std::vector<std::vector<Interp4Command *>> _Cmds;
+  std::queue<std::thread> _ThreadQueue;
 
 public:
   ProgramInterpreter() {}
@@ -54,7 +57,7 @@ public:
 
   void prepareScene()
   {
-    sock.Send("Clear\n");
+    _Sock.Send("Clear\n");
 
     for (const CubeConfig &cube : _Config.getCubes())
     {
@@ -73,19 +76,22 @@ public:
            << " Name=" << cube.Name
            << " Shift=" << cube.Shift
            << " Scale=" << cube.Scale
+           << " RotXYZ_deg=" << cube.RotXYZ_deg
            << " Trans_m=" << cube.Trans_m
            << " RGB=" << cube.RGB
            << "\n";
 
       cout << strm.str();
 
-      sock.Send(strm.str().c_str());
+      _Sock.Send(strm.str().c_str());
     }
   }
 
   void parseCmds(string cmdFile)
   {
     std::stringstream cmdStream(processCmdFile(cmdFile));
+    bool parallel = false;
+    std::vector<Interp4Command *> cmds_temp;
 
     while (!cmdStream.eof())
     {
@@ -93,14 +99,32 @@ public:
       cmdStream >> name;
       if (name.length() > 1)
       {
-        _Cmds.push_back(_LibMan[name]->getCmd());
-        _Cmds.back()->ReadParams(cmdStream);
+        if (name == "Begin_Parallel_Actions")
+        {
+          parallel = true;
+          cmds_temp.clear();
+        }
+        else if (name == "End_Parallel_Actions")
+        {
+          parallel = false;
+          _Cmds.push_back(cmds_temp);
+        }
+        else
+        {
+          if (parallel)
+          {
+            cmds_temp.push_back(_LibMan[name]->getCmd());
+            cmds_temp.back()->ReadParams(cmdStream);
+          }
+          else
+          {
+            cmds_temp.clear();
+            cmds_temp.push_back(_LibMan[name]->getCmd());
+            cmds_temp.back()->ReadParams(cmdStream);
+            _Cmds.push_back(cmds_temp);
+          }
+        }
       }
-      // if (cmdStream.fail())
-      // {
-      //   // cout << "Command parse error!" << endl;
-      //   // exit(1);
-      // }
     }
   }
 
@@ -108,17 +132,28 @@ public:
   {
     cout << "Odczytane komendy: " << endl;
     int i = 1;
-    for (Interp4Command *cmd : _Cmds)
+    for (std::vector<Interp4Command *> &cmds : _Cmds)
     {
-      cout << i++ << ". ";
-      cmd->PrintCmd();
+      for (Interp4Command *cmd : cmds)
+      {
+        cout << i++ << ". ";
+        cmd->PrintCmd();
+      }
     }
   }
 
   void execCmds()
   {
-    for (Interp4Command *cmd : _Cmds)
+    for (std::vector<Interp4Command *> &cmds : _Cmds)
     {
+      for (Interp4Command *cmd : cmds)
+        _ThreadQueue.push(std::thread(&Interp4Command::ExecCmd, cmd, &_Scn, &_Sock));
+
+      while (!_ThreadQueue.empty())
+      {
+        _ThreadQueue.front().join();
+        _ThreadQueue.pop();
+      }
     }
   }
 
@@ -130,12 +165,12 @@ public:
     parseCmds(cmdFile);
     printCmds();
 
-    sock.Open();
+    _Sock.Open();
 
     prepareScene();
 
     execCmds();
 
-    sock.Close();
+    _Sock.Close();
   }
 };
